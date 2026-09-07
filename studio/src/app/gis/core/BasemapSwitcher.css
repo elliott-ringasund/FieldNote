@@ -1,0 +1,91 @@
+.gis-basemaps {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 5;
+}
+
+.gis-bm-row {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(10, 20, 26, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* The clickable preview tile. */
+.gis-bm-thumb {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 9px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0a141a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.14s ease, transform 0.14s ease;
+}
+
+.gis-bm-thumb:hover {
+  transform: translateY(-1px);
+}
+
+.gis-bm-thumb.active {
+  border-color: #36a2ef;
+}
+
+.gis-bm-thumb:focus-visible {
+  outline: 2px solid #36a2ef;
+  outline-offset: 2px;
+}
+
+.gis-bm-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Label sits on a gradient scrim so it reads over any imagery. */
+.gis-bm-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 4px 3px;
+  font: 600 9px/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+}
+
+/* Little "expand" glyph, only on the collapsed single thumbnail. */
+.gis-bm-caret {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gis-bm-thumb {
+    transition: none;
+  }
+}

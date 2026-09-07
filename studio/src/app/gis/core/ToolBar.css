@@ -1,0 +1,107 @@
+.toolbar {
+  position: absolute;
+  z-index: 7;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.toolbar-grip {
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: #5f767d;
+  font-size: 12px;
+  cursor: grab;
+  border-radius: 7px;
+  margin-bottom: 1px;
+}
+
+.toolbar-grip:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #b9cace;
+}
+
+.toolbar-grip:active {
+  cursor: grabbing;
+}
+
+.toolbar-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(10, 20, 26, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.toolbar-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #cfe0e4;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.toolbar-btn.active {
+  background: #2b87c9;
+  color: #fff;
+}
+
+.toolbar-btn:focus-visible {
+  outline: 2px solid #36a2ef;
+  outline-offset: 2px;
+}
+
+.toolbar-flyout {
+  width: 190px;
+  padding: 12px 13px;
+  border-radius: 10px;
+  background: rgba(10, 20, 26, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e6eef0;
+  font: 13px/1.45 ui-sans-serif, system-ui, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.toolbar-flyout-title {
+  font-weight: 650;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.toolbar-flyout-hint {
+  font-size: 12.5px;
+  color: #a9c0c6;
+}
+
+.toolbar-flyout-stub {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  color: #7a939b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolbar-btn {
+    transition: none;
+  }
+}

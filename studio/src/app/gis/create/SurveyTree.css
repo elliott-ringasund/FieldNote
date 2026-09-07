@@ -1,0 +1,247 @@
+.st {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.st-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #7a939b;
+  padding: 2px 0;
+}
+
+.st-newgroup {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: #8aa1a8;
+  border-radius: 6px;
+  font: 600 10px/1 ui-sans-serif, system-ui, sans-serif;
+  padding: 3px 8px;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.st-newgroup:hover {
+  color: #8fd3ff;
+  border-color: rgba(54, 162, 239, 0.5);
+}
+
+/* ---- group ---- */
+.st-group {
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.st-group.drop {
+  border-color: #36a2ef;
+  background: rgba(54, 162, 239, 0.1);
+}
+
+.st-ghead {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 4px 3px;
+}
+
+.st-chev {
+  border: none;
+  background: transparent;
+  color: #7a939b;
+  cursor: pointer;
+  font-size: 9px;
+  padding: 0 1px;
+  flex: none;
+}
+
+.st-key {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 4px;
+  border: 1.5px solid;
+  cursor: pointer;
+  font-size: 9px;
+  line-height: 1;
+  color: #0b1820;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.st-key.ghost {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: transparent;
+  cursor: default;
+}
+
+.st-gname {
+  flex: 1;
+  min-width: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #e6eef0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.st-rename {
+  flex: 1;
+  min-width: 0;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #36a2ef;
+  border-radius: 5px;
+  color: #e6eef0;
+  font: 11.5px/1.2 ui-sans-serif, system-ui, sans-serif;
+  padding: 2px 6px;
+  outline: none;
+}
+
+.st-count {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 9px;
+  color: #6f8990;
+  flex: none;
+}
+
+.st-vis {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  flex: none;
+  padding: 0;
+  width: 15px;
+}
+
+/* ---- features ---- */
+.st-feats {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-left: 14px;
+}
+
+.st-empty {
+  font-size: 10px;
+  color: #6f8990;
+  padding: 5px 8px;
+  font-style: italic;
+}
+
+.st-feat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.st-feat:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.st-feat.sel {
+  background: rgba(54, 162, 239, 0.16);
+  border-color: rgba(54, 162, 239, 0.5);
+}
+
+.st-feat.dragging {
+  opacity: 0.4;
+}
+
+.st-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.st-kind {
+  flex: none;
+  width: 11px;
+  text-align: center;
+  color: #8aa1a8;
+  font-size: 9px;
+}
+
+.st-name {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e6eef0;
+  font: 11.5px/1 ui-sans-serif, system-ui, sans-serif;
+  padding: 2px 0;
+}
+
+.st-name:focus {
+  border-bottom: 1px solid #36a2ef;
+}
+
+.st-meta {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 9px;
+  color: #7a939b;
+  flex: none;
+}
+
+.st-x {
+  border: none;
+  background: transparent;
+  color: #7a939b;
+  cursor: pointer;
+  font-size: 10px;
+  flex: none;
+  width: 13px;
+  padding: 0;
+}
+
+.st-x:hover {
+  color: #ef8a54;
+}
+
+/* ---- context menu ---- */
+.st-menu {
+  position: fixed;
+  z-index: 400;
+  min-width: 158px;
+  padding: 4px;
+  border-radius: 9px;
+  background: rgba(11, 24, 30, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.st-menu button {
+  border: none;
+  background: transparent;
+  color: #e6eef0;
+  text-align: left;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: 12px/1 ui-sans-serif, system-ui, sans-serif;
+}
+
+.st-menu button:hover {
+  background: rgba(54, 162, 239, 0.18);
+}
+
+.st-menu button.danger:hover {
+  background: rgba(230, 57, 70, 0.22);
+  color: #ff8f98;
+}

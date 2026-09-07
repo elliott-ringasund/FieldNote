@@ -1,0 +1,22 @@
+import { Check, Palette, Tag, X } from 'lucide-react'
+import { useState } from 'react'
+import type { FieldRecord, RecordStyle } from '../types'
+
+type Props = { record: FieldRecord; onClose: () => void; onSave: (record: FieldRecord) => void }
+
+export function RecordStyleSheet({ record, onClose, onSave }: Props) {
+  const [tab, setTab] = useState<'geometry' | 'label'>('geometry')
+  const [style, setStyle] = useState<RecordStyle>({ color: '#31c4d6', outlineColor: '#ffffff', outlineWidth: 3, lineWidth: 5, autoScale: true, symbol: 'circle', showLabel: true, labelOffsetX: 0, labelOffsetY: -24, ...record.style })
+  return <div className="sheet-backdrop solid"><section className="bottom-sheet compact-sheet style-sheet" role="dialog" aria-modal="true"><div className="sheet-handle"/><div className="sheet-heading"><div><p className="eyebrow">Map display</p><h2>Style {record.label}</h2></div><button type="button" className="icon-button" onClick={onClose}><X /></button></div>
+    <div className="style-tabs"><button type="button" className={tab === 'geometry' ? 'active' : ''} onClick={() => setTab('geometry')}><Palette /> Geometry</button><button type="button" className={tab === 'label' ? 'active' : ''} onClick={() => setTab('label')}><Tag /> Label position</button></div>
+    <div className="form-scroll">{tab === 'geometry' ? <>
+      <div className="two-fields"><label className="field-label"><span>{record.mode === 'area' ? 'Fill colour' : 'Feature colour'}</span><input className="full-colour" type="color" value={style.color} onChange={(event) => setStyle({ ...style, color: event.target.value })}/></label><label className="field-label"><span>Outline colour</span><input className="full-colour" type="color" value={style.outlineColor} onChange={(event) => setStyle({ ...style, outlineColor: event.target.value })}/></label></div>
+      <label className="field-label extent-control"><span>Outline thickness <b>{style.outlineWidth}px</b></span><input type="range" min="0" max="10" step="1" value={style.outlineWidth} onChange={(event) => setStyle({ ...style, outlineWidth: Number(event.target.value) })}/></label>
+      {record.mode === 'point' ? <label className="field-label"><span>Point symbol</span><select value={style.symbol} onChange={(event) => setStyle({ ...style, symbol: event.target.value as RecordStyle['symbol'] })}><option value="pin">Pin</option><option value="circle">Circle</option><option value="square">Square</option><option value="triangle">Triangle</option></select></label> : <><label className="field-label extent-control"><span>Line thickness <b>{style.lineWidth}px</b></span><input type="range" min="1" max="16" value={style.lineWidth} onChange={(event) => setStyle({ ...style, lineWidth: Number(event.target.value) })}/></label><label className="toggle-row"><input type="checkbox" checked={style.autoScale !== false} onChange={(event) => setStyle({ ...style, autoScale: event.target.checked })}/><span><strong>Auto-scale thickness</strong><small>Adjust visual line weight as the map zoom changes.</small></span></label></>}
+    </> : <>
+      <label className="toggle-row"><input type="checkbox" checked={style.showLabel !== false} onChange={(event) => setStyle({ ...style, showLabel: event.target.checked })}/><span><strong>Show label</strong><small>Mudmap export also avoids other label boxes where possible.</small></span></label>
+      {style.showLabel !== false && <div className="label-position-settings"><p>Manual label offset</p><label className="field-label extent-control"><span>Left / right <b>{style.labelOffsetX}px</b></span><input type="range" min="-90" max="90" value={style.labelOffsetX} onChange={(event) => setStyle({ ...style, labelOffsetX: Number(event.target.value) })}/></label><label className="field-label extent-control"><span>Up / down <b>{style.labelOffsetY}px</b></span><input type="range" min="-90" max="90" value={style.labelOffsetY} onChange={(event) => setStyle({ ...style, labelOffsetY: Number(event.target.value) })}/></label><button type="button" className="secondary-button" onClick={() => setStyle({ ...style, labelOffsetX: 0, labelOffsetY: -24 })}>Reset label position</button></div>}
+    </>}</div>
+    <div className="sheet-actions"><button type="button" className="secondary-button" onClick={onClose}>Cancel</button><button type="button" className="primary-button" onClick={() => onSave({ ...record, style, updatedAt: new Date().toISOString(), syncStatus: 'local' })}><Check /> Apply style</button></div>
+  </section></div>
+}

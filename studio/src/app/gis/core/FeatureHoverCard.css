@@ -1,0 +1,72 @@
+.fhc {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 14px));
+  z-index: 8;
+  min-width: 158px;
+  max-width: 224px;
+  padding: 10px 11px;
+  border-radius: 9px;
+  background: rgba(10, 20, 26, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  color: #e6eef0;
+  font: 12px/1.4 ui-sans-serif, system-ui, sans-serif;
+  pointer-events: auto;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* little pointer down to the feature */
+.fhc::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) rotate(45deg);
+  background: rgba(10, 20, 26, 0.94);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.fhc-name {
+  font-weight: 650;
+  font-size: 13.5px;
+  margin-bottom: 7px;
+}
+
+.fhc-kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 10px;
+  margin: 0 0 9px;
+}
+
+.fhc-kv dt {
+  color: #7a939b;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: center;
+}
+
+.fhc-kv dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.fhc-btn {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+  background: #2b87c9;
+  color: #fff;
+  cursor: pointer;
+  font: 600 12px/1 ui-sans-serif, system-ui, sans-serif;
+}
+
+.fhc-btn:hover {
+  background: #36a2ef;
+}

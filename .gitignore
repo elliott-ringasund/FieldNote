@@ -1,0 +1,59 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+# Nested studio/ sub-project builds its own bundle
+studio/node_modules
+studio/dist
+
+# Capacitor native build output (tens of MB of APKs, dex, gradle caches)
+android/build/
+android/app/build/
+android/.gradle/
+android/local.properties
+android/.idea/
+android/app/release/
+*.apk
+*.aab
+ios/App/build/
+ios/App/Pods/
+ios/App/output/
+ios/DerivedData/
+
+# Signing material — never version
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+credentials*.json
+service-account*.json
